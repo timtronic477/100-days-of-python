@@ -1,4 +1,5 @@
 import random
+from art import logo
 
 deck = [2, 3, 4, 5, 6, 7, 8, 9, 10, 10, 10, 10, 11]
 
@@ -73,9 +74,9 @@ def soft_17():
 def compare():
     if sum(d) == sum(p):
         tie()
-    if sum(p) > sum(d):
+    elif sum(p) > sum(d):
         win()
-    if sum(p) < sum(d):
+    else:
         lose()
 
 def aces():
@@ -83,6 +84,8 @@ def aces():
     d_check()
 
 def blackjack():
+    print("\n"*20)
+    print(logo)
     money_on_table = True
     deal()
     board()
