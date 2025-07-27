@@ -8,7 +8,7 @@ def r():
     return random.randint(0, 12)
 
 def deal():
-    p.append(deck[12])
+    p.append(deck[r()])
     p.append(deck[r()])
     d.append(deck[r()])
 
@@ -62,8 +62,9 @@ def check():
        p[p.index(11)] = 1
 
 def d_check():
-    if sum(d) > 17 and 11 in p:
+    if sum(d) > 17 and 11 in d:
        d[d.index(11)] = 1
+    soft_17()
 
 def soft_17():
     while sum(d) < 17:
@@ -76,6 +77,10 @@ def compare():
         win()
     if sum(p) < sum(d):
         lose()
+
+def aces():
+    soft_17()
+    d_check()
 
 def blackjack():
     money_on_table = True
@@ -95,7 +100,7 @@ def blackjack():
             else:
                 board()
         else:
-            soft_17()
+            aces()
             if sum(d) > 21:
                 d_bust()
                 money_on_table = False
